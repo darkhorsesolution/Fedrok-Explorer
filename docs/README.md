@@ -79,8 +79,6 @@ FEDROK_RPC_PRIMARY=http://20.151.233.51:8545/
 
 - [Fedrok Website](https://fedrok.com/)
 - [Fedrok Whitepaper](../whitepaper.md)
-- [GitHub Repository](https://github.com/fedrok/explorer)
-
 ---
 
 **Built with 🌱 by the Fedrok team for a sustainable blockchain future.**

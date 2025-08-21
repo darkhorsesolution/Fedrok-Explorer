@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Block {
+  number              BigInt    @id
+  hash                String    @unique @db.VarChar(66)
+  parentHash          String    @map("parent_hash") @db.VarChar(66)
+  timestamp           Int
+  miner               String    @db.VarChar(42)
+  gasUsed             String    @map("gas_used")
+  gasLimit            String    @map("gas_limit")
+  baseFeePerGas       String?   @map("base_fee_per_gas")
+  size                Int?
+  transactionCount    Int       @map("transaction_count")
+  greenMiner          Boolean   @default(false) @map("green_miner")
+  roundRobinPosition  Int?      @map("round_robin_position")
+  createdAt           DateTime  @default(now()) @map("created_at")
+  indexedAt           DateTime  @default(now()) @map("indexed_at")
+
+  @@map("blocks")
+  @@index([timestamp])
+  @@index([miner])
+  @@index([greenMiner])
+  @@index([createdAt])
+}
+
+model IndexerState {
+  id                 Int       @id @default(1)
+  lastIndexedBlock   BigInt    @map("last_indexed_block") @default(0)
+  lastIndexedAt      DateTime? @map("last_indexed_at")
+  indexerVersion     String    @default("1.0.0") @map("indexer_version")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+
+  @@map("indexer_state")
+}
