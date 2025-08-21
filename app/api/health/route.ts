@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import pool from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 
 export async function GET() {
   try {
     const start = Date.now();
-    const result = await pool.query('SELECT NOW(), version()');
+    const result = await prisma.$queryRaw`SELECT NOW(), version()` as any[];
     const queryTime = Date.now() - start;
     
     return NextResponse.json({ 
@@ -12,8 +12,8 @@ export async function GET() {
       database: {
         connected: true,
         queryTime: `${queryTime}ms`,
-        timestamp: result.rows[0].now,
-        version: result.rows[0].version
+        timestamp: result[0].now,
+        version: result[0].version
       }
     });
   } catch (error) {
