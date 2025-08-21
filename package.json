@@ -7,14 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:init": "tsx scripts/init-db.ts"
+    "db:init": "tsx scripts/init-db.ts",
+    "db:prisma": "tsx scripts/init-prisma.ts",
+    "db:migrate": "npx prisma migrate dev",
+    "db:generate": "npx prisma generate",
+    "db:reset": "npx prisma migrate reset --force"
   },
   "dependencies": {
+    "@prisma/client": "^6.14.0",
     "@types/pg": "^8.15.5",
     "dotenv": "^16.4.7",
     "ethers": "^6.15.0",
     "next": "15.4.7",
     "pg": "^8.16.3",
+    "prisma": "^6.14.0",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
