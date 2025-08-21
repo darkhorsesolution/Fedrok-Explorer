@@ -1,4 +1,10 @@
 import { ethers, JsonRpcProvider } from 'ethers';
+import { config } from 'dotenv';
+
+// Load environment variables for non-Next.js contexts (scripts, tests)
+if (process.env.NODE_ENV !== 'production' && !process.env.NEXT_RUNTIME) {
+  config();
+}
 
 interface FedrokRpcConfig {
   chainId: number;
@@ -29,25 +35,30 @@ class FedrokRPC {
   }
 
   private async getProvider(): Promise<JsonRpcProvider> {
-    const provider = this.providers[this.currentProviderIndex];
-    
-    try {
-      // Test the current provider with a simple call
-      await provider.getNetwork();
-      return provider;
-    } catch (error) {
-      console.warn(`RPC endpoint ${this.currentProviderIndex} failed, trying next...`);
-      
-      // Try next provider
-      this.currentProviderIndex = (this.currentProviderIndex + 1) % this.providers.length;
-      
-      // If we've tried all providers, throw error
-      if (this.currentProviderIndex === 0) {
-        throw new Error('All RPC endpoints are unavailable');
-      }
-      
-      return this.getProvider(); // Recursive call to try next provider
+    if (this.providers.length === 0) {
+      throw new Error('No RPC endpoints configured');
     }
+
+    let attempts = 0;
+    const maxAttempts = this.providers.length;
+    
+    while (attempts < maxAttempts) {
+      const provider = this.providers[this.currentProviderIndex];
+      
+      try {
+        // Test the current provider with a simple call
+        await provider.getNetwork();
+        return provider;
+      } catch (error) {
+        console.warn(`RPC endpoint ${this.currentProviderIndex} failed, trying next...`);
+        
+        // Try next provider
+        this.currentProviderIndex = (this.currentProviderIndex + 1) % this.providers.length;
+        attempts++;
+      }
+    }
+    
+    throw new Error('All RPC endpoints are unavailable');
   }
 
   async getLatestBlockNumber(): Promise<number> {
