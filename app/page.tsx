@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MinimizeButton } from '@/components';
+import { MinimizeButton, LayoutWrapper } from '@/components';
 
 type Block = {
   id: string;
