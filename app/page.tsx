@@ -1,103 +1,354 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+
+type Block = {
+  id: string;
+  height: number;
+  timestamp: string;
+  transactions: number;
+  miner: string;
+  gasUsed: string;
+  gasLimit: string;
+};
+
+type Transaction = {
+  hash: string;
+  from: string;
+  to: string;
+  value: string;
+  fee: string;
+  timestamp: string;
+};
+
+type NetworkStats = {
+  totalBlocks: string;
+  totalTransactions: string;
+  activeNodes: string;
+  hashRate: string;
+  difficulty: string;
+  blockTime: string;
+};
+
+export default function FedrokExplorer() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchType, setSearchType] = useState("all");
+  const [selectedBlock, setSelectedBlock] = useState<Block | null>(null);
+  const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
+
+  const recentBlocks: Block[] = [
+    {
+      id: "0x1a2b3c4d",
+      height: 1234567,
+      timestamp: "2024-01-15 14:30:25",
+      transactions: 42,
+      miner: "0x742d35Cc6634C0532925a3b8D4C0532925a3b8D4",
+      gasUsed: "8,234,567",
+      gasLimit: "15,000,000",
+    },
+    {
+      id: "0x2b3c4d5e",
+      height: 1234566,
+      timestamp: "2024-01-15 14:29:12",
+      transactions: 38,
+      miner: "0x853e46Dd7745D0643036a4c9E4C0643036a4c9E4",
+      gasUsed: "7,891,234",
+      gasLimit: "15,000,000",
+    },
+    {
+      id: "0x3c4d5e6f",
+      height: 1234565,
+      timestamp: "2024-01-15 14:27:58",
+      transactions: 51,
+      miner: "0x964f57Ee8856E0754147b5dF5C0754147b5dF5C",
+      gasUsed: "9,123,456",
+      gasLimit: "15,000,000",
+    },
+  ];
+
+  const recentTransactions: Transaction[] = [
+    {
+      hash: "0xa1b2c3d4e5f6789012345678901234567890abcd",
+      from: "0x742d35Cc6634C0532925a3b8D4C0532925a3b8D4",
+      to: "0x853e46Dd7745D0643036a4c9E4C0643036a4c9E4",
+      value: "1.25 FDK",
+      fee: "0.001 FDK",
+      timestamp: "2 mins ago",
+    },
+    {
+      hash: "0xb2c3d4e5f6789012345678901234567890abcdef",
+      from: "0x964f57Ee8856E0754147b5dF5C0754147b5dF5C",
+      to: "0xa75g68Ff9967F0865258c6eG6D0865258c6eG6D",
+      value: "0.75 FDK",
+      fee: "0.0008 FDK",
+      timestamp: "3 mins ago",
+    },
+    {
+      hash: "0xc3d4e5f6789012345678901234567890abcdef01",
+      from: "0xb86h79Gg0a78G0976369d7fH7E0976369d7fH7E",
+      to: "0xc97i80Hh1b89H1a87470e8gI8F1a87470e8gI8F",
+      value: "2.50 FDK",
+      fee: "0.0012 FDK",
+      timestamp: "5 mins ago",
+    },
+  ];
+
+  const networkStats: NetworkStats = {
+    totalBlocks: "1,234,567",
+    totalTransactions: "45,678,901",
+    activeNodes: "2,847",
+    hashRate: "1.2 TH/s",
+    difficulty: "8.5T",
+    blockTime: "12.3s",
+  };
+
+  const handleSearch = () => {
+    console.log(`Searching for: ${searchQuery} (type: ${searchType})`);
+  };
+
+  const selectBlock = (block: Block) => {
+    setSelectedBlock(block);
+    setSelectedTransaction(null);
+  };
+
+  const selectTransaction = (transaction: Transaction) => {
+    setSelectedTransaction(transaction);
+    setSelectedBlock(null);
+  };
+
+  const formatAddress = (address: string) => {
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  };
+
+  const formatStatLabel = (key: string) => {
+    return key.replace(/([A-Z])/g, " $1").trim();
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <div className="bg-primary-800 pt-20 pb-20 px-10">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-white font-display text-5xl md:text-6xl font-bold mb-5 leading-tight">
+            Fedrok Blockchain Explorer
+          </h1>
+          <p className="text-white/90 text-xl leading-relaxed mb-10 max-w-3xl mx-auto">
+            Explore blocks, transactions, and network activity on the sustainable Fedrok blockchain
+          </p>
+          
+          {/* Search Section */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+              <select 
+                value={searchType}
+                onChange={(e) => setSearchType(e.target.value)}
+                className="bg-white border-2 border-primary-600 rounded-lg px-4 py-3 text-primary-800 font-medium min-w-32 focus:outline-none focus:ring-2 focus:ring-primary-400"
+              >
+                <option value="all">All</option>
+                <option value="block">Block</option>
+                <option value="transaction">Transaction</option>
+                <option value="address">Address</option>
+              </select>
+              <input 
+                type="text"
+                placeholder="Search by block number, transaction hash, or address..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="flex-1 bg-white border-2 border-primary-600 rounded-lg px-4 py-3 text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-400"
+              />
+              <button 
+                onClick={handleSearch}
+                className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1"
+              >
+                Search
+              </button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Network Statistics */}
+      <div className="bg-primary-50 py-16 px-10">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-primary-800 font-display text-4xl text-center mb-12 font-bold">
+            Network Statistics
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {Object.entries(networkStats).map(([key, value]) => (
+              <div 
+                key={key}
+                className="bg-white rounded-xl p-6 text-center border-2 border-primary-600 transition-transform duration-300 hover:-translate-y-2 shadow-green"
+              >
+                <div className="text-primary-600 font-display text-2xl font-bold mb-2">
+                  {value}
+                </div>
+                <div className="text-primary-800 text-sm capitalize">
+                  {formatStatLabel(key)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Blocks and Transactions */}
+      <div className="bg-white py-16 px-10">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+          {/* Recent Blocks */}
+          <div>
+            <h3 className="text-primary-800 font-display text-3xl mb-8 font-bold">
+              Recent Blocks
+            </h3>
+            <div className="space-y-4">
+              {recentBlocks.map((block) => (
+                <div 
+                  key={block.id}
+                  onClick={() => selectBlock(block)}
+                  className="bg-primary-50 rounded-xl p-6 border-2 border-primary-600 cursor-pointer transition-all duration-300 hover:bg-primary-600 hover:text-white hover:translate-x-2"
+                >
+                  <div className="flex justify-between items-center mb-3">
+                    <div className="font-display text-lg font-semibold">
+                      Block #{block.height}
+                    </div>
+                    <div className="text-sm opacity-80">
+                      {block.timestamp}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div>Transactions: {block.transactions}</div>
+                    <div>Gas Used: {block.gasUsed}</div>
+                    <div className="col-span-2">Miner: {formatAddress(block.miner)}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Recent Transactions */}
+          <div>
+            <h3 className="text-primary-800 font-display text-3xl mb-8 font-bold">
+              Recent Transactions
+            </h3>
+            <div className="space-y-4">
+              {recentTransactions.map((tx) => (
+                <div 
+                  key={tx.hash}
+                  onClick={() => selectTransaction(tx)}
+                  className="bg-primary-50 rounded-xl p-6 border-2 border-primary-600 cursor-pointer transition-all duration-300 hover:bg-primary-600 hover:text-white hover:translate-x-2"
+                >
+                  <div className="flex justify-between items-center mb-3">
+                    <div className="font-display text-sm font-semibold">
+                      {formatAddress(tx.hash)}
+                    </div>
+                    <div className="text-sm opacity-80">
+                      {tx.timestamp}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div>Value: {tx.value}</div>
+                    <div>Fee: {tx.fee}</div>
+                    <div>From: {formatAddress(tx.from)}</div>
+                    <div>To: {formatAddress(tx.to)}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Detail Modal */}
+        {(selectedBlock || selectedTransaction) && (
+          <div className="max-w-6xl mx-auto mt-16 bg-primary-50 rounded-2xl p-8 border-2 border-primary-600">
+            {selectedBlock && (
+              <div>
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-primary-800 font-display text-3xl font-bold">
+                    Block #{selectedBlock.height} Details
+                  </h3>
+                  <button 
+                    onClick={() => setSelectedBlock(null)}
+                    className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <strong className="text-primary-800">Block Hash:</strong>
+                    <div className="break-all">{selectedBlock.id}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">Height:</strong>
+                    <div>{selectedBlock.height}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">Timestamp:</strong>
+                    <div>{selectedBlock.timestamp}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">Transactions:</strong>
+                    <div>{selectedBlock.transactions}</div>
+                  </div>
+                  <div className="md:col-span-2">
+                    <strong className="text-primary-800">Miner:</strong>
+                    <div className="break-all">{selectedBlock.miner}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">Gas Used:</strong>
+                    <div>{selectedBlock.gasUsed}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">Gas Limit:</strong>
+                    <div>{selectedBlock.gasLimit}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {selectedTransaction && (
+              <div>
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-primary-800 font-display text-3xl font-bold">
+                    Transaction Details
+                  </h3>
+                  <button 
+                    onClick={() => setSelectedTransaction(null)}
+                    className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                  <div className="md:col-span-2">
+                    <strong className="text-primary-800">Transaction Hash:</strong>
+                    <div className="break-all">{selectedTransaction.hash}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">From:</strong>
+                    <div className="break-all">{selectedTransaction.from}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">To:</strong>
+                    <div className="break-all">{selectedTransaction.to}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">Value:</strong>
+                    <div>{selectedTransaction.value}</div>
+                  </div>
+                  <div>
+                    <strong className="text-primary-800">Fee:</strong>
+                    <div>{selectedTransaction.fee}</div>
+                  </div>
+                  <div className="md:col-span-2">
+                    <strong className="text-primary-800">Timestamp:</strong>
+                    <div>{selectedTransaction.timestamp}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
