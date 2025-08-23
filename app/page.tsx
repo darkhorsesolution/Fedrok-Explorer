@@ -187,21 +187,25 @@ export default function FedrokExplorer() {
       </div>
 
       {/* Network Statistics */}
-      <div className="bg-primary-50 py-16 px-10">
+      <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "64px 40px" }}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-primary-800 font-display text-4xl text-center mb-12 font-bold">
+          <h2 className="font-display text-4xl text-center mb-12 font-bold" style={{ color: "rgb(0, 74, 37)" }}>
             Network Statistics
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {Object.entries(networkStats).map(([key, value]) => (
-              <div 
+              <div
                 key={key}
-                className="bg-white rounded-xl p-6 text-center border-2 border-primary-600 transition-transform duration-300 hover:-translate-y-2 shadow-green"
+                className="rounded-xl p-6 text-center border-2 transition-transform duration-300 hover:-translate-y-2"
+                style={{
+                  backgroundColor: "rgb(255, 255, 255)",
+                  borderColor: "rgb(5, 96, 50)"
+                }}
               >
-                <div className="text-primary-600 font-display text-2xl font-bold mb-2">
+                <div className="font-display text-2xl font-bold mb-2" style={{ color: "rgb(5, 96, 50)" }}>
                   {value}
                 </div>
-                <div className="text-primary-800 text-sm capitalize">
+                <div className="text-sm capitalize" style={{ color: "rgb(0, 74, 37)" }}>
                   {formatStatLabel(key)}
                 </div>
               </div>
@@ -211,19 +215,32 @@ export default function FedrokExplorer() {
       </div>
 
       {/* Recent Blocks and Transactions */}
-      <div className="bg-white py-16 px-10">
+      <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "64px 40px" }}>
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
           {/* Recent Blocks */}
           <div>
-            <h3 className="text-primary-800 font-display text-3xl mb-8 font-bold">
+            <h3 className="font-display text-3xl mb-8 font-bold" style={{ color: "rgb(0, 74, 37)" }}>
               Recent Blocks
             </h3>
             <div className="space-y-4">
               {recentBlocks.map((block) => (
-                <div 
+                <div
                   key={block.id}
                   onClick={() => selectBlock(block)}
-                  className="bg-primary-50 rounded-xl p-6 border-2 border-primary-600 cursor-pointer transition-all duration-300 hover:bg-primary-600 hover:text-white hover:translate-x-2"
+                  className="rounded-xl p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
+                  style={{
+                    backgroundColor: "rgb(255, 255, 255)",
+                    borderColor: "rgb(5, 96, 50)",
+                    color: "rgb(0, 74, 37)"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)";
+                    e.currentTarget.style.color = "rgb(255, 255, 255)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgb(255, 255, 255)";
+                    e.currentTarget.style.color = "rgb(0, 74, 37)";
+                  }}
                 >
                   <div className="flex justify-between items-center mb-3">
                     <div className="font-display text-lg font-semibold">
@@ -245,15 +262,28 @@ export default function FedrokExplorer() {
 
           {/* Recent Transactions */}
           <div>
-            <h3 className="text-primary-800 font-display text-3xl mb-8 font-bold">
+            <h3 className="font-display text-3xl mb-8 font-bold" style={{ color: "rgb(0, 74, 37)" }}>
               Recent Transactions
             </h3>
             <div className="space-y-4">
               {recentTransactions.map((tx) => (
-                <div 
+                <div
                   key={tx.hash}
                   onClick={() => selectTransaction(tx)}
-                  className="bg-primary-50 rounded-xl p-6 border-2 border-primary-600 cursor-pointer transition-all duration-300 hover:bg-primary-600 hover:text-white hover:translate-x-2"
+                  className="rounded-xl p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
+                  style={{
+                    backgroundColor: "rgb(255, 255, 255)",
+                    borderColor: "rgb(5, 96, 50)",
+                    color: "rgb(0, 74, 37)"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)";
+                    e.currentTarget.style.color = "rgb(255, 255, 255)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgb(255, 255, 255)";
+                    e.currentTarget.style.color = "rgb(0, 74, 37)";
+                  }}
                 >
                   <div className="flex justify-between items-center mb-3">
                     <div className="font-display text-sm font-semibold">
@@ -277,47 +307,53 @@ export default function FedrokExplorer() {
 
         {/* Detail Modal */}
         {(selectedBlock || selectedTransaction) && (
-          <div className="max-w-6xl mx-auto mt-16 bg-primary-50 rounded-2xl p-8 border-2 border-primary-600">
+          <div className="max-w-6xl mx-auto mt-16 rounded-2xl p-8 border-2" style={{
+            backgroundColor: "rgb(255, 255, 255)",
+            borderColor: "rgb(5, 96, 50)"
+          }}>
             {selectedBlock && (
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-primary-800 font-display text-3xl font-bold">
+                  <h3 className="font-display text-3xl font-bold" style={{ color: "rgb(0, 74, 37)" }}>
                     Block #{selectedBlock.height} Details
                   </h3>
-                  <button 
+                  <button
                     onClick={() => setSelectedBlock(null)}
-                    className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
+                    className="text-white px-4 py-2 rounded-lg transition-colors"
+                    style={{ backgroundColor: "rgb(5, 96, 50)" }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgb(0, 74, 37)"}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)"}
                   >
                     Close
                   </button>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm" style={{ color: "rgb(0, 74, 37)" }}>
                   <div>
-                    <strong className="text-primary-800">Block Hash:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Block Hash:</strong>
                     <div className="break-all">{selectedBlock.id}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">Height:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Height:</strong>
                     <div>{selectedBlock.height}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">Timestamp:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Timestamp:</strong>
                     <div>{selectedBlock.timestamp}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">Transactions:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Transactions:</strong>
                     <div>{selectedBlock.transactions}</div>
                   </div>
                   <div className="md:col-span-2">
-                    <strong className="text-primary-800">Miner:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Miner:</strong>
                     <div className="break-all">{selectedBlock.miner}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">Gas Used:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Gas Used:</strong>
                     <div>{selectedBlock.gasUsed}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">Gas Limit:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Gas Limit:</strong>
                     <div>{selectedBlock.gasLimit}</div>
                   </div>
                 </div>
@@ -327,39 +363,42 @@ export default function FedrokExplorer() {
             {selectedTransaction && (
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-primary-800 font-display text-3xl font-bold">
+                  <h3 className="font-display text-3xl font-bold" style={{ color: "rgb(0, 74, 37)" }}>
                     Transaction Details
                   </h3>
-                  <button 
+                  <button
                     onClick={() => setSelectedTransaction(null)}
-                    className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
+                    className="text-white px-4 py-2 rounded-lg transition-colors"
+                    style={{ backgroundColor: "rgb(5, 96, 50)" }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgb(0, 74, 37)"}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)"}
                   >
                     Close
                   </button>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="grid md:grid-cols-2 gap-4 text-sm" style={{ color: "rgb(0, 74, 37)" }}>
                   <div className="md:col-span-2">
-                    <strong className="text-primary-800">Transaction Hash:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Transaction Hash:</strong>
                     <div className="break-all">{selectedTransaction.hash}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">From:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>From:</strong>
                     <div className="break-all">{selectedTransaction.from}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">To:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>To:</strong>
                     <div className="break-all">{selectedTransaction.to}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">Value:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Value:</strong>
                     <div>{selectedTransaction.value}</div>
                   </div>
                   <div>
-                    <strong className="text-primary-800">Fee:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Fee:</strong>
                     <div>{selectedTransaction.fee}</div>
                   </div>
                   <div className="md:col-span-2">
-                    <strong className="text-primary-800">Timestamp:</strong>
+                    <strong style={{ color: "rgb(5, 96, 50)" }}>Timestamp:</strong>
                     <div>{selectedTransaction.timestamp}</div>
                   </div>
                 </div>
