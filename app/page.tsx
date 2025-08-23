@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import SustainabilityHeader from '@/components/SustainabilityHeader';
+import Footer from '@/components/Footer';
 
 type Block = {
   id: string;
@@ -126,6 +128,9 @@ export default function FedrokExplorer() {
 
   return (
     <div className="min-h-screen">
+      {/* Sustainability Header */}
+      <SustainabilityHeader />
+
       {/* Hero Section */}
       <div className="bg-primary-800 pt-20 pb-20 px-10">
         <div className="max-w-6xl mx-auto text-center">
@@ -349,6 +354,9 @@ export default function FedrokExplorer() {
           </div>
         )}
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
