@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { SustainabilityHeader, Footer } from '@/components';
+import { Footer } from '@/components';
 
 type Block = {
   id: string;
@@ -127,16 +127,13 @@ export default function FedrokExplorer() {
 
   return (
     <div className="min-h-screen">
-      {/* Sustainability Header */}
-      <SustainabilityHeader />
-
       {/* Hero Section */}
-      <div className="bg-primary-800 pt-20 pb-20 px-10">
+      <div className="bg-primary-800 py-20 px-10">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-white font-display text-5xl md:text-6xl font-bold mb-5 leading-tight">
+          <h1 className="text-white font-display text-6xl font-bold mb-5 leading-tight">
             Fedrok Blockchain Explorer
           </h1>
-          <p className="text-white/90 text-xl leading-relaxed mb-10 max-w-3xl mx-auto">
+          <p className="text-white/90 text-xl leading-loose mb-10 max-w-3xl mx-auto">
             Explore blocks, transactions, and network activity on the sustainable Fedrok blockchain
           </p>
           
