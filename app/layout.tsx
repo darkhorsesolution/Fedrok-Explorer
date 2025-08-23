@@ -14,6 +14,9 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+// Note: Unbounded font would need to be imported from Google Fonts
+// For now using Inter as fallback for display font
+
 export const metadata: Metadata = {
   title: "Fedrok Explorer",
   description: "Blockchain explorer for Fedrok - The green Layer 1 EVM blockchain with Proof of Green consensus",
