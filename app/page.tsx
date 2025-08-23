@@ -127,6 +127,23 @@ export default function FedrokExplorer() {
 
   return (
     <div className="min-h-screen">
+      {/* Empty Header Section */}
+      <div style={{
+        borderColor: "rgb(5, 96, 50)",
+        color: "rgb(5, 96, 50)",
+        outlineColor: "rgb(5, 96, 50)",
+        textDecorationColor: "rgb(5, 96, 50)",
+        textEmphasisColor: "rgb(5, 96, 50)",
+      }}>
+        <div style={{
+          borderColor: "rgb(5, 96, 50)",
+          color: "rgb(5, 96, 50)",
+          outlineColor: "rgb(5, 96, 50)",
+          textDecorationColor: "rgb(5, 96, 50)",
+          textEmphasisColor: "rgb(5, 96, 50)",
+        }} />
+      </div>
+
       {/* Hero Section */}
       <div className="bg-primary-800" style={{ padding: "80px 40px" }}>
         <div className="mx-auto text-center" style={{ maxWidth: "1152px" }}>
