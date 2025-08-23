@@ -50,124 +50,206 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-primary-50 py-24 px-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
+    <footer style={{ backgroundColor: "rgb(251, 241, 229)" }}>
+      <div className="flex flex-col items-center max-w-screen-2xl mx-auto w-full" style={{ padding: "24px 80px" }}>
+        <div className="flex flex-wrap justify-between max-w-screen-2xl w-full gap-4">
           {/* Left Column - Branding & Contact */}
-          <div className="space-y-16">
+          <div className="flex flex-col">
             {/* Logo */}
-            <div className="w-52 h-52">
-              <div className="w-full h-full bg-primary-600 rounded-2xl flex items-center justify-center">
+            <div className="mb-16" style={{ height: "204px", width: "204px" }}>
+              <div className="bg-primary-600 rounded-2xl flex items-center justify-center h-full w-full">
                 <span className="text-white font-display text-6xl font-bold">F</span>
               </div>
             </div>
 
             {/* Mission Statement */}
-            <div className="max-w-xl">
-              <h3 className="text-primary-800 font-sans text-3xl lg:text-4xl font-light leading-relaxed mb-12">
+            <div className="pb-12" style={{ maxWidth: "630px", color: "rgb(0, 74, 37)" }}>
+              <h6 style={{
+                fontFamily: "WorkSans, sans-serif",
+                fontSize: "40px",
+                fontWeight: "300",
+                lineHeight: "52px",
+                color: "rgb(0, 74, 37)"
+              }}>
                 Blockchain for sustainability. Let's create a lasting impact together.
-              </h3>
+              </h6>
             </div>
 
             {/* Contact Section */}
-            <div className="space-y-4">
-              <p className="text-primary-800 font-sans text-base">Contact us</p>
-              <div className="flex items-center gap-3">
+            <div className="w-fit">
+              <div className="flex justify-between w-full">
+                <p style={{
+                  fontFamily: "WorkSans, sans-serif",
+                  lineHeight: "22.4px",
+                  color: "rgb(0, 74, 37)"
+                }}>
+                  Contact us
+                </p>
                 <button
                   onClick={handleCopyEmail}
-                  className="flex items-center gap-2 text-primary-800 hover:text-primary-600 transition-colors"
+                  className="flex items-center gap-2 cursor-pointer transition-colors duration-200"
+                  style={{ color: "rgb(0, 74, 37)" }}
                 >
-                  <span className="font-sans text-base">
+                  <p style={{
+                    fontFamily: "WorkSans, sans-serif",
+                    lineHeight: "22.4px",
+                    color: "rgb(0, 74, 37)"
+                  }}>
                     {copiedEmail ? 'Email Copied!' : 'Copy Email'}
-                  </span>
-                  <span className="text-lg">📋</span>
+                  </p>
+                  <span className="text-base">📋</span>
                 </button>
               </div>
-              <div>
-                <h4 className="text-primary-600 font-display text-4xl lg:text-5xl font-bold hover:text-primary-700 transition-colors cursor-pointer">
+              <button className="cursor-pointer">
+                <h5 style={{
+                  fontFamily: "Unbounded, sans-serif",
+                  fontSize: "48px",
+                  lineHeight: "62.4px",
+                  textAlign: "center",
+                  color: "rgb(5, 96, 50)"
+                }}>
                   contact@fedrok.com
-                </h4>
-              </div>
+                </h5>
+              </button>
             </div>
           </div>
 
           {/* Right Column - Navigation */}
-          <div className="space-y-20">
+          <div className="flex flex-col items-end gap-20 mt-5" style={{ maxWidth: "760px", minWidth: "320px" }}>
             {/* Navigation Links */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-20">
+            <div className="flex gap-20 justify-end w-full">
               {Object.entries(navigationSections).map(([sectionName, links]) => (
-                <div key={sectionName} className="space-y-3">
-                  <h4 className="text-primary-800 font-sans text-base font-medium mb-3">
+                <div key={sectionName} className="flex flex-col gap-3 w-fit">
+                  <p style={{
+                    fontFamily: "WorkSans, sans-serif",
+                    lineHeight: "22.4px",
+                    color: "rgb(0, 74, 37)"
+                  }}>
                     {sectionName}
-                  </h4>
-                  <div className="space-y-2">
-                    {links.map((link) => (
-                      <Link
-                        key={link.name}
-                        href={link.href}
-                        className="block text-primary-800 font-sans text-base hover:text-primary-600 transition-colors tracking-wide"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
+                  </p>
+                  {links.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className="cursor-pointer transition-all duration-300 hover:transform hover:translate-x-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontFamily: "WorkSans, sans-serif",
+                        letterSpacing: "0.5px",
+                        textAlign: "center",
+                        color: "rgb(0, 74, 37)"
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
                 </div>
               ))}
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="https://fedrok.com/docs"
-                className="bg-white border-2 border-primary-600 text-primary-600 px-20 py-4 rounded-lg font-sans text-xl text-center hover:bg-primary-50 transition-colors min-w-44"
-              >
+            <div className="flex flex-wrap gap-8">
+              <button style={{
+                backgroundColor: "rgb(255, 255, 255)",
+                border: "2px solid rgb(5, 96, 50)",
+                color: "rgb(5, 96, 50)",
+                fontFamily: "WorkSans, sans-serif",
+                fontSize: "20px",
+                lineHeight: "28px",
+                height: "60px",
+                minWidth: "180px",
+                padding: "0 80px",
+                textAlign: "center"
+              }}>
                 Docs
-              </Link>
-              <Link
-                href="#"
-                className="bg-primary-600 text-white px-8 py-4 rounded-lg font-sans text-xl flex items-center justify-between hover:bg-primary-700 transition-colors min-w-64"
-              >
+              </button>
+              <button className="flex items-center justify-between" style={{
+                backgroundColor: "rgb(5, 96, 50)",
+                color: "rgb(255, 255, 255)",
+                fontFamily: "WorkSans, sans-serif",
+                fontSize: "20px",
+                lineHeight: "28px",
+                height: "60px",
+                minWidth: "267px",
+                padding: "0 32px 0 32px"
+              }}>
                 <span>Start Mining</span>
-                <div className="bg-white text-primary-600 w-12 h-12 rounded flex items-center justify-center ml-2">
+                <div className="flex items-center justify-center bg-white text-primary-600" style={{
+                  minHeight: "48px",
+                  minWidth: "48px",
+                  aspectRatio: "1 / 1"
+                }}>
                   <span className="text-xl transform rotate-45">→</span>
                 </div>
-              </Link>
+              </button>
             </div>
 
             {/* Contact Info & Social Links */}
-            <div className="flex flex-col lg:flex-row lg:justify-between gap-12">
+            <div className="flex gap-20 justify-end w-full">
               {/* Contact Info */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="max-w-32">
-                  <h5 className="text-primary-800 font-sans text-base font-medium mb-1">Address</h5>
-                  <p className="text-primary-600 text-sm leading-relaxed">
+              <div className="flex gap-6">
+                <div className="flex flex-col gap-1 max-w-32 w-full">
+                  <p style={{
+                    fontFamily: "WorkSans, sans-serif",
+                    lineHeight: "22.4px",
+                    color: "rgb(0, 74, 37)"
+                  }}>
+                    Address
+                  </p>
+                  <p style={{
+                    fontFamily: "WorkSans, sans-serif",
+                    fontSize: "14px",
+                    lineHeight: "19.6px",
+                    color: "rgb(5, 96, 50)"
+                  }}>
                     Bahnhofplatz 6300 Zug<br />
                     Switzerland
                   </p>
                 </div>
-                <div className="max-w-32">
-                  <h5 className="text-primary-800 font-sans text-base font-medium mb-1">Phone</h5>
-                  <p className="text-primary-600 text-sm">+44-7730-280670</p>
+                <div className="flex flex-col gap-1 max-w-32 w-full">
+                  <p style={{
+                    fontFamily: "WorkSans, sans-serif",
+                    lineHeight: "22.4px",
+                    color: "rgb(0, 74, 37)"
+                  }}>
+                    Phone
+                  </p>
+                  <p style={{
+                    fontFamily: "WorkSans, sans-serif",
+                    fontSize: "14px",
+                    lineHeight: "19.6px",
+                    color: "rgb(5, 96, 50)"
+                  }}>
+                    +44-7730-280670
+                  </p>
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="lg:text-right">
-                <h5 className="text-primary-800 font-sans text-base font-medium mb-3">Follow us on</h5>
-                <div className="flex flex-wrap gap-6 lg:justify-end">
+              <div className="flex flex-col w-fit">
+                <p style={{
+                  fontFamily: "WorkSans, sans-serif",
+                  lineHeight: "22.4px",
+                  color: "rgb(0, 74, 37)"
+                }}>
+                  Follow us on
+                </p>
+                <div className="flex gap-6 justify-end pt-3 text-right w-fit">
                   {socialLinks.map((social) => (
-                    <Link
+                    <button
                       key={social.name}
-                      href={social.href}
-                      className="bg-primary-600 text-white w-9 h-9 rounded flex items-center justify-center hover:bg-primary-700 transition-colors text-xl"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      className="flex items-center justify-center transition-colors duration-200"
+                      style={{
+                        backgroundColor: "rgb(5, 96, 50)",
+                        color: "rgb(255, 255, 255)",
+                        height: "36px",
+                        width: "36px"
+                      }}
                       title={social.name}
                     >
                       {social.icon}
-                    </Link>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -176,18 +258,35 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-primary-200 pt-20 flex flex-col lg:flex-row-reverse lg:justify-between gap-4">
-          <div>
+        <div className="flex flex-row-reverse flex-wrap justify-between max-w-screen-2xl w-full gap-4" style={{ paddingTop: "78px" }}>
+          <div className="flex gap-4">
             <Link
               href="https://fedrok.com/privacy-policy"
-              className="text-primary-600 font-sans text-base underline hover:text-primary-700 transition-colors"
+              className="cursor-pointer underline"
+              style={{
+                fontFamily: "WorkSans, sans-serif",
+                lineHeight: "22.4px",
+                color: "rgb(105, 160, 132)"
+              }}
             >
               Privacy Policy
             </Link>
           </div>
-          <div className="flex gap-2 text-primary-600 font-sans text-base">
-            <span>©Fedrok 2024. All rights reserved by Fedrok.</span>
-            <span>v 1.8.0</span>
+          <div className="flex gap-2">
+            <p style={{
+              fontFamily: "WorkSans, sans-serif",
+              lineHeight: "22.4px",
+              color: "rgb(105, 160, 132)"
+            }}>
+              ©Fedrok 2024. All rights reserved by Fedrok.
+            </p>
+            <p style={{
+              fontFamily: "WorkSans, sans-serif",
+              lineHeight: "22.4px",
+              color: "rgb(105, 160, 132)"
+            }}>
+              v 1.8.0
+            </p>
           </div>
         </div>
       </div>
