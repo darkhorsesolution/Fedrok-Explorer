@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Footer } from '@/components';
+import { Footer, MinimizeButton } from '@/components';
 
 type Block = {
   id: string;
@@ -353,6 +353,9 @@ export default function FedrokExplorer() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Minimize Button */}
+      <MinimizeButton onClick={() => console.log('Minimize clicked')} />
     </div>
   );
 }
