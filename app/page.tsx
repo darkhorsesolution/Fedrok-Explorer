@@ -126,7 +126,8 @@ export default function FedrokExplorer() {
   };
 
   return (
-    <div className="min-h-screen">
+    <LayoutWrapper>
+      <div className="min-h-screen">
       {/* Empty Header Section */}
       <div style={{
         borderColor: "rgb(5, 96, 50)",
@@ -370,6 +371,7 @@ export default function FedrokExplorer() {
 
       {/* Minimize Button */}
       <MinimizeButton onClick={() => console.log('Minimize clicked')} />
-    </div>
+      </div>
+    </LayoutWrapper>
   );
 }
