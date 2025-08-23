@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import SustainabilityHeader from '@/components/SustainabilityHeader';
-import Footer from '@/components/Footer';
+import { SustainabilityHeader, Footer } from '@/components';
 
 type Block = {
   id: string;
