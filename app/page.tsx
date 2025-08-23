@@ -215,11 +215,14 @@ export default function FedrokExplorer() {
       </div>
 
       {/* Recent Blocks and Transactions */}
-      <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "64px 40px" }}>
+      <div style={{ backgroundColor: "rgb(0, 74, 37)", padding: "64px 40px" }}>
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
           {/* Recent Blocks */}
           <div>
-            <h3 className="font-display text-3xl mb-8 font-bold" style={{ color: "rgb(0, 74, 37)" }}>
+            <h3 className="text-3xl mb-8 font-bold" style={{
+              color: "rgb(255, 255, 255)",
+              fontFamily: "Unbounded, sans-serif"
+            }}>
               Recent Blocks
             </h3>
             <div className="space-y-4">
@@ -229,28 +232,29 @@ export default function FedrokExplorer() {
                   onClick={() => selectBlock(block)}
                   className="rounded-xl p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
                   style={{
-                    backgroundColor: "rgb(255, 255, 255)",
-                    borderColor: "rgb(5, 96, 50)",
-                    color: "rgb(0, 74, 37)"
+                    backgroundColor: "rgb(0, 74, 37)",
+                    borderColor: "rgb(255, 255, 255)",
+                    color: "rgb(255, 255, 255)",
+                    fontFamily: "Unbounded, sans-serif"
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)";
                     e.currentTarget.style.color = "rgb(255, 255, 255)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgb(255, 255, 255)";
-                    e.currentTarget.style.color = "rgb(0, 74, 37)";
+                    e.currentTarget.style.backgroundColor = "rgb(0, 74, 37)";
+                    e.currentTarget.style.color = "rgb(255, 255, 255)";
                   }}
                 >
                   <div className="flex justify-between items-center mb-3">
-                    <div className="font-display text-lg font-semibold">
+                    <div className="text-lg font-semibold" style={{ fontFamily: "Unbounded, sans-serif" }}>
                       Block #{block.height}
                     </div>
-                    <div className="text-sm opacity-80">
+                    <div className="text-sm opacity-80" style={{ fontFamily: "Unbounded, sans-serif" }}>
                       {block.timestamp}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="grid grid-cols-2 gap-2 text-sm" style={{ fontFamily: "Unbounded, sans-serif" }}>
                     <div>Transactions: {block.transactions}</div>
                     <div>Gas Used: {block.gasUsed}</div>
                     <div className="col-span-2">Miner: {formatAddress(block.miner)}</div>
@@ -262,7 +266,10 @@ export default function FedrokExplorer() {
 
           {/* Recent Transactions */}
           <div>
-            <h3 className="font-display text-3xl mb-8 font-bold" style={{ color: "rgb(0, 74, 37)" }}>
+            <h3 className="text-3xl mb-8 font-bold" style={{
+              color: "rgb(255, 255, 255)",
+              fontFamily: "Unbounded, sans-serif"
+            }}>
               Recent Transactions
             </h3>
             <div className="space-y-4">
@@ -272,28 +279,29 @@ export default function FedrokExplorer() {
                   onClick={() => selectTransaction(tx)}
                   className="rounded-xl p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
                   style={{
-                    backgroundColor: "rgb(255, 255, 255)",
-                    borderColor: "rgb(5, 96, 50)",
-                    color: "rgb(0, 74, 37)"
+                    backgroundColor: "rgb(0, 74, 37)",
+                    borderColor: "rgb(255, 255, 255)",
+                    color: "rgb(255, 255, 255)",
+                    fontFamily: "Unbounded, sans-serif"
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)";
                     e.currentTarget.style.color = "rgb(255, 255, 255)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgb(255, 255, 255)";
-                    e.currentTarget.style.color = "rgb(0, 74, 37)";
+                    e.currentTarget.style.backgroundColor = "rgb(0, 74, 37)";
+                    e.currentTarget.style.color = "rgb(255, 255, 255)";
                   }}
                 >
                   <div className="flex justify-between items-center mb-3">
-                    <div className="font-display text-sm font-semibold">
+                    <div className="text-sm font-semibold" style={{ fontFamily: "Unbounded, sans-serif" }}>
                       {formatAddress(tx.hash)}
                     </div>
-                    <div className="text-sm opacity-80">
+                    <div className="text-sm opacity-80" style={{ fontFamily: "Unbounded, sans-serif" }}>
                       {tx.timestamp}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="grid grid-cols-2 gap-2 text-sm" style={{ fontFamily: "Unbounded, sans-serif" }}>
                     <div>Value: {tx.value}</div>
                     <div>Fee: {tx.fee}</div>
                     <div>From: {formatAddress(tx.from)}</div>
