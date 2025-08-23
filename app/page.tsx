@@ -127,6 +127,19 @@ export default function FedrokExplorer() {
 
   return (
     <div className="min-h-screen">
+      {/* Sustainability Header */}
+      <div className="bg-primary-800 relative overflow-hidden">
+        <div className="flex flex-col gap-10 max-w-screen-2xl mx-auto py-32 px-10">
+          <h1 className="text-white font-display text-7xl leading-tight max-w-5xl mx-auto text-center animate-fade-in">
+            Join Us in Building a Sustainable Future
+          </h1>
+          <h2 className="text-white font-sans text-4xl font-light leading-relaxed max-w-5xl mx-auto text-center animate-fade-in">
+            Fedrok is more than a blockchain; it's a commitment to environmental
+            responsibility and a better tomorrow. Be part of the change.
+          </h2>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <div className="bg-primary-800 py-20 px-10">
         <div className="max-w-6xl mx-auto text-center">
