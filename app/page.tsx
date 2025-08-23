@@ -128,12 +128,12 @@ export default function FedrokExplorer() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="bg-primary-800 py-20 px-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-white font-display text-6xl font-bold mb-5 leading-tight">
+      <div className="bg-primary-800" style={{ padding: "80px 40px" }}>
+        <div className="mx-auto text-center" style={{ maxWidth: "1152px" }}>
+          <h1 className="text-white font-bold" style={{ fontSize: "60px", lineHeight: "75px", marginBottom: "20px" }}>
             Fedrok Blockchain Explorer
           </h1>
-          <p className="text-white/90 text-xl leading-loose mb-10 max-w-3xl mx-auto">
+          <p className="text-white/90" style={{ fontSize: "20px", lineHeight: "32.5px" }}>
             Explore blocks, transactions, and network activity on the sustainable Fedrok blockchain
           </p>
           
