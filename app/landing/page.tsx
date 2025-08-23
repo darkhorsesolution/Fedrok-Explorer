@@ -1,5 +1,4 @@
-import SustainabilityHeader from '@/components/SustainabilityHeader';
-import Footer from '@/components/Footer';
+import { SustainabilityHeader, Footer } from '@/components';
 
 export default function LandingPage() {
   return (
