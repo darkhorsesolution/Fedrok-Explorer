@@ -133,10 +133,10 @@ export default function FedrokExplorer() {
           <h1 className="text-white font-bold" style={{ fontSize: "60px", lineHeight: "75px", marginBottom: "20px" }}>
             Fedrok Blockchain Explorer
           </h1>
-          <p className="text-white/90" style={{ fontSize: "20px", lineHeight: "32.5px" }}>
+          <p className="text-white/90 mb-10" style={{ fontSize: "20px", lineHeight: "32.5px" }}>
             Explore blocks, transactions, and network activity on the sustainable Fedrok blockchain
           </p>
-          
+
           {/* Search Section */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="flex flex-col sm:flex-row gap-4 items-stretch">
