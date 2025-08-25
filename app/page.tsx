@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MinimizeButton, LayoutWrapper } from '@/components';
+import { MinimizeButton, LayoutWrapper, Header } from '@/components';
 
 type Block = {
   id: string;
@@ -127,6 +127,7 @@ export default function FedrokExplorer() {
 
   return (
     <LayoutWrapper>
+      <Header />
       <div className="min-h-screen">
 
 
