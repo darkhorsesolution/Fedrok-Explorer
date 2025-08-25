@@ -220,7 +220,7 @@ export default function FedrokExplorer() {
           }}>
             Network Statistics
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {Object.entries(networkStats).map(([key, value]) => (
               <div
                 key={key}
