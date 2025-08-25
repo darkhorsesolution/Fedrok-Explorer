@@ -250,12 +250,23 @@ export default function FedrokExplorer() {
       {/* Blockchain Explorer Hero Section */}
       <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "80px 40px" }}>
         <div className="mx-auto text-center" style={{ maxWidth: "1152px" }}>
-          <h1 className="font-bold" style={{ fontSize: "60px", lineHeight: "75px", marginBottom: "20px", color: "rgb(0, 74, 37)" }}>
+          <div style={{
+            color: "rgb(0, 74, 37)",
+            fontSize: "60px",
+            fontWeight: "700",
+            lineHeight: "75px",
+            marginBottom: "20px"
+          }}>
             Fedrok Blockchain Explorer
-          </h1>
-          <p className="mb-10" style={{ fontSize: "20px", lineHeight: "32.5px", color: "rgb(0, 74, 37)" }}>
+          </div>
+          <div style={{
+            color: "rgb(0, 74, 37)",
+            fontSize: "20px",
+            lineHeight: "32.5px",
+            marginBottom: "40px"
+          }}>
             Explore blocks, transactions, and network activity on the sustainable Fedrok blockchain
-          </p>
+          </div>
 
           {/* Search Section */}
           <div className="rounded-2xl p-8 border-2" style={{ backgroundColor: "rgb(255, 255, 255)", borderColor: "rgb(5, 96, 50)" }}>
