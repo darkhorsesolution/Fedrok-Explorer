@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Unbounded } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,8 +14,11 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// Note: Unbounded font would need to be imported from Google Fonts
-// For now using Inter as fallback for display font
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Fedrok Explorer",
@@ -30,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${unbounded.variable} font-sans antialiased`}
       >
         {children}
       </body>

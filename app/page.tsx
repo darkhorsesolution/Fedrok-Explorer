@@ -132,69 +132,77 @@ export default function FedrokExplorer() {
 
       {/* Blockchain Explorer Hero Section */}
       <div style={{
-        alignItems: "center",
-        backgroundColor: "rgb(0, 74, 37)",
-        backgroundImage: 'url("https://fedrok.com/images/audit-top.svg"), url("https://fedrok.com/images/audit-left.svg"), url("https://fedrok.com/images/audit-right.svg")',
-        backgroundPosition: "50% 0%, 40px 100%, right 40px 100%",
-        backgroundRepeat: "no-repeat, no-repeat, no-repeat",
-        backgroundSize: "90%, auto 374px, auto 374px",
         display: "flex",
+        alignItems: "center",
         justifyContent: "center",
-        maxWidth: "1840px",
-        padding: "112px 40px",
-        marginLeft: "auto",
-        marginRight: "auto"
-      }}>
-        <div className="mx-auto text-center" style={{ maxWidth: "864px" }}>
-          <div style={{
+        width: "100%",
+        padding: "40px 20px",
+        color: "#fff",
+        backgroundColor: "#004a25",
+        backgroundImage: 'url("https://fedrok.com/images/audit-top.svg"), url("https://fedrok.com/images/audit-left.svg"), url("https://fedrok.com/images/audit-right.svg")',
+        backgroundBlendMode: "overlay",
+        backgroundPosition: "top center, 40px bottom, right 40px bottom",
+        backgroundRepeat: "no-repeat, no-repeat, no-repeat",
+        backgroundSize: "90% auto, auto 200px, auto 200px"
+      }} className="sm:py-20 md:py-24 lg:py-32 sm:px-8 md:px-12 lg:px-16">
+        <div className="mx-auto text-center w-full" style={{ maxWidth: "1400px" }}>
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 lg:mb-8" style={{
             animation: "0.3s ease 0.3s 1 normal forwards running fadeInAnimation",
             color: "rgb(255, 255, 255)",
-            font: "68px/88.4px Unbounded, sans-serif",
-            fontFamily: "Unbounded, sans-serif",
-            fontSize: "68px",
-            lineHeight: "88.4px",
-            marginBottom: "20px",
-            textAlign: "center"
+            fontFamily: "var(--font-unbounded), sans-serif",
+            lineHeight: "1.1"
           }}>
             Fedrok Blockchain Explorer
           </div>
-          <div style={{
+          <div className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 lg:mb-10 px-4" style={{
             color: "rgb(255, 255, 255)",
-            fontSize: "20px",
-            lineHeight: "32.5px",
-            marginBottom: "40px"
+            fontFamily: "var(--font-unbounded), sans-serif",
+            lineHeight: "1.4"
           }}>
             Explore blocks, transactions, and network activity on the sustainable Fedrok blockchain
           </div>
 
           {/* Search Section */}
-          <div className="rounded-2xl p-8 border-2" style={{ backgroundColor: "rgb(255, 255, 255)", borderColor: "rgb(5, 96, 50)" }}>
-            <div className="flex flex-col sm:flex-row gap-4 items-stretch">
-              <select 
-                value={searchType}
-                onChange={(e) => setSearchType(e.target.value)}
-                className="bg-white rounded-lg px-4 py-3 font-medium min-w-32 focus:outline-none focus:ring-2 focus:ring-green-600" 
-                style={{ border: "2px solid rgb(5, 96, 50)", color: "rgb(0, 74, 37)" }}
-              >
-                <option value="all">All</option>
-                <option value="block">Block</option>
-                <option value="transaction">Transaction</option>
-                <option value="address">Address</option>
-              </select>
+          <div className="rounded-2xl p-4 sm:p-6 md:p-8 border-2 shadow-2xl backdrop-blur-sm mx-auto" 
+            style={{ 
+              background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
+              borderColor: "rgba(255, 255, 255, 0.3)", 
+              maxWidth: "1200px", 
+              width: "100%",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)"
+            }}>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch">
               <input 
                 type="text"
                 placeholder="Search by block number, transaction hash, or address..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 bg-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
-                style={{ border: "2px solid rgb(5, 96, 50)", color: "rgb(0, 74, 37)" }}
+                className="flex-1 rounded-lg px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/30 backdrop-blur-sm transition-all duration-300"
+                style={{ 
+                  background: "rgba(255, 255, 255, 0.9)",
+                  border: "1px solid rgba(255, 255, 255, 0.3)", 
+                  color: "rgb(0, 74, 37)",
+                  fontFamily: "var(--font-unbounded), sans-serif"
+                }}
               />
               <button 
                 onClick={handleSearch}
-                className="text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1"
-                style={{ backgroundColor: "rgb(5, 96, 50)" }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgb(0, 74, 37)"}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)"}
+                className="px-4 sm:px-6 py-2 rounded-lg font-bold text-xs sm:text-sm transition-all duration-300 hover:scale-105 hover:shadow-xl backdrop-blur-sm whitespace-nowrap"
+                style={{ 
+                  background: "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)",
+                  color: "rgb(0, 74, 37)",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
+                  fontFamily: "var(--font-unbounded), sans-serif"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 100%)";
+                  e.currentTarget.style.transform = "scale(1.05)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)";
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
               >
                 Search
               </button>
@@ -205,8 +213,11 @@ export default function FedrokExplorer() {
 
       {/* Network Statistics */}
       <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "64px 40px" }}>
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-display text-4xl text-center mb-12 font-bold" style={{ color: "rgb(0, 74, 37)" }}>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 md:mb-12 font-bold" style={{ 
+            color: "rgb(0, 74, 37)",
+            fontFamily: "var(--font-unbounded), sans-serif"
+          }}>
             Network Statistics
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -219,10 +230,16 @@ export default function FedrokExplorer() {
                   borderColor: "rgb(5, 96, 50)"
                 }}
               >
-                <div className="font-display text-2xl font-bold mb-2" style={{ color: "rgb(5, 96, 50)" }}>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold mb-2" style={{ 
+                  color: "rgb(5, 96, 50)",
+                  fontFamily: "var(--font-unbounded), sans-serif"
+                }}>
                   {value}
                 </div>
-                <div className="text-sm capitalize" style={{ color: "rgb(0, 74, 37)" }}>
+                <div className="text-xs sm:text-sm capitalize" style={{ 
+                  color: "rgb(0, 74, 37)",
+                  fontFamily: "var(--font-unbounded), sans-serif"
+                }}>
                   {formatStatLabel(key)}
                 </div>
               </div>
@@ -232,13 +249,13 @@ export default function FedrokExplorer() {
       </div>
 
       {/* Recent Blocks and Transactions */}
-      <div style={{ backgroundColor: "rgb(255, 255, 255)", padding: "64px 40px" }}>
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+      <div style={{ backgroundColor: "rgb(255, 255, 255)", padding: "32px 20px" }} className="sm:p-12 md:p-16 lg:p-20">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-12">
           {/* Recent Blocks */}
           <div>
-            <h3 className="text-3xl mb-8 font-bold" style={{
+            <h3 className="text-xl sm:text-2xl md:text-3xl mb-6 md:mb-8 font-bold" style={{
               color: "rgb(0, 74, 37)",
-              fontFamily: "Unbounded, sans-serif"
+              fontFamily: "var(--font-unbounded), sans-serif"
             }}>
               Recent Blocks
             </h3>
@@ -247,12 +264,12 @@ export default function FedrokExplorer() {
                 <div
                   key={block.id}
                   onClick={() => selectBlock(block)}
-                  className="rounded-xl p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
+                  className="rounded-xl p-4 sm:p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
                   style={{
                     backgroundColor: "rgb(251, 241, 229)",
                     borderColor: "rgb(5, 96, 50)",
                     color: "rgb(0, 74, 37)",
-                    fontFamily: "Unbounded, sans-serif"
+                    fontFamily: "var(--font-unbounded), sans-serif"
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)";
@@ -264,14 +281,14 @@ export default function FedrokExplorer() {
                   }}
                 >
                   <div className="flex justify-between items-center mb-3">
-                    <div className="text-lg font-semibold" style={{ fontFamily: "Unbounded, sans-serif" }}>
+                    <div className="text-sm sm:text-base md:text-lg font-semibold" style={{ fontFamily: "var(--font-unbounded), sans-serif" }}>
                       Block #{block.height}
                     </div>
-                    <div className="text-sm opacity-80" style={{ fontFamily: "Unbounded, sans-serif" }}>
+                    <div className="text-xs sm:text-sm opacity-80" style={{ fontFamily: "var(--font-unbounded), sans-serif" }}>
                       {block.timestamp}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 text-sm" style={{ fontFamily: "Unbounded, sans-serif" }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm" style={{ fontFamily: "var(--font-unbounded), sans-serif" }}>
                     <div>Transactions: {block.transactions}</div>
                     <div>Gas Used: {block.gasUsed}</div>
                     <div className="col-span-2">Miner: {formatAddress(block.miner)}</div>
@@ -283,9 +300,9 @@ export default function FedrokExplorer() {
 
           {/* Recent Transactions */}
           <div>
-            <h3 className="text-3xl mb-8 font-bold" style={{
+            <h3 className="text-xl sm:text-2xl md:text-3xl mb-6 md:mb-8 font-bold" style={{
               color: "rgb(0, 74, 37)",
-              fontFamily: "Unbounded, sans-serif"
+              fontFamily: "var(--font-unbounded), sans-serif"
             }}>
               Recent Transactions
             </h3>
@@ -294,12 +311,12 @@ export default function FedrokExplorer() {
                 <div
                   key={tx.hash}
                   onClick={() => selectTransaction(tx)}
-                  className="rounded-xl p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
+                  className="rounded-xl p-4 sm:p-6 border-2 cursor-pointer transition-all duration-300 hover:translate-x-2"
                   style={{
                     backgroundColor: "rgb(251, 241, 229)",
                     borderColor: "rgb(5, 96, 50)",
                     color: "rgb(0, 74, 37)",
-                    fontFamily: "Unbounded, sans-serif"
+                    fontFamily: "var(--font-unbounded), sans-serif"
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)";
@@ -314,11 +331,11 @@ export default function FedrokExplorer() {
                     <div className="text-sm font-semibold" style={{ fontFamily: "Unbounded, sans-serif" }}>
                       {formatAddress(tx.hash)}
                     </div>
-                    <div className="text-sm opacity-80" style={{ fontFamily: "Unbounded, sans-serif" }}>
+                    <div className="text-xs sm:text-sm opacity-80" style={{ fontFamily: "var(--font-unbounded), sans-serif" }}>
                       {tx.timestamp}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 text-sm" style={{ fontFamily: "Unbounded, sans-serif" }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm" style={{ fontFamily: "var(--font-unbounded), sans-serif" }}>
                     <div>Value: {tx.value}</div>
                     <div>Fee: {tx.fee}</div>
                     <div>From: {formatAddress(tx.from)}</div>
