@@ -128,50 +128,9 @@ export default function FedrokExplorer() {
   return (
     <LayoutWrapper>
       <div className="min-h-screen">
-      {/* Empty Header Section */}
-      <div style={{
-        borderColor: "rgb(5, 96, 50)",
-        color: "rgb(5, 96, 50)",
-        outlineColor: "rgb(5, 96, 50)",
-        textDecorationColor: "rgb(5, 96, 50)",
-        textEmphasisColor: "rgb(5, 96, 50)",
-      }}>
-        <div style={{
-          borderColor: "rgb(5, 96, 50)",
-          color: "rgb(5, 96, 50)",
-          outlineColor: "rgb(5, 96, 50)",
-          textDecorationColor: "rgb(5, 96, 50)",
-          textEmphasisColor: "rgb(5, 96, 50)",
-        }} />
-      </div>
 
-      {/* Content Section */}
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        position: "relative",
-        minHeight: "100px",
-        padding: "20px",
-        maxWidth: "1200px",
-        marginLeft: "auto",
-        marginRight: "auto"
-      }}>
-        <section style={{
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          minHeight: "100px",
-          padding: "20px",
-          width: "100%",
-          alignSelf: "stretch",
-          flexGrow: "1",
-          maxWidth: "1200px",
-          marginLeft: "auto",
-          marginRight: "auto"
-        }} />
-      </div>
 
-      {/* Marketing Hero Section */}
+      {/* Blockchain Explorer Hero Section */}
       <div style={{
         alignItems: "center",
         backgroundColor: "rgb(0, 74, 37)",
@@ -186,81 +145,21 @@ export default function FedrokExplorer() {
         marginLeft: "auto",
         marginRight: "auto"
       }}>
-        <div>
+        <div className="mx-auto text-center" style={{ maxWidth: "864px" }}>
           <div style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            gap: "40px",
-            maxWidth: "864px",
-            textAlign: "center",
-            width: "100%"
-          }}>
-            <h3 style={{
-              animation: "0.3s ease 0.3s 1 normal forwards running fadeInAnimation",
-              animationDelay: "0.3s",
-              animationDuration: "0.3s",
-              animationFillMode: "forwards",
-              color: "rgb(255, 255, 255)",
-              opacity: "1",
-              textAlign: "center",
-              transitionDuration: "0.4s",
-              font: "68px/88.4px Unbounded, sans-serif",
-              fontFamily: "Unbounded, sans-serif",
-              fontSize: "68px",
-              lineHeight: "88.4px"
-            }}>
-              Fedrok offers a unique way to combine profit with purpose
-            </h3>
-            <button
-              type="button"
-              style={{
-                backgroundColor: "rgb(255, 255, 255)",
-                borderColor: "rgb(5, 96, 50)",
-                color: "rgb(5, 96, 50)",
-                cursor: "pointer",
-                height: "60px",
-                minWidth: "180px",
-                textAlign: "center",
-                padding: "0 80px",
-                font: "20px/28px WorkSans, sans-serif",
-                border: "2px solid rgb(5, 96, 50)",
-                borderRadius: "8px"
-              }}
-            >
-              <div style={{
-                alignItems: "center",
-                display: "flex",
-                height: "50px",
-                justifyContent: "center",
-                font: "20px/28px WorkSans, sans-serif"
-              }}>
-                <p style={{
-                  font: "20px/28px WorkSans, sans-serif",
-                  whiteSpace: "nowrap"
-                }}>
-                  Buy FDK Today
-                </p>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Blockchain Explorer Hero Section */}
-      <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "80px 40px" }}>
-        <div className="mx-auto text-center" style={{ maxWidth: "1152px" }}>
-          <div style={{
-            color: "rgb(0, 74, 37)",
-            fontSize: "60px",
-            fontWeight: "700",
-            lineHeight: "75px",
-            marginBottom: "20px"
+            animation: "0.3s ease 0.3s 1 normal forwards running fadeInAnimation",
+            color: "rgb(255, 255, 255)",
+            font: "68px/88.4px Unbounded, sans-serif",
+            fontFamily: "Unbounded, sans-serif",
+            fontSize: "68px",
+            lineHeight: "88.4px",
+            marginBottom: "20px",
+            textAlign: "center"
           }}>
             Fedrok Blockchain Explorer
           </div>
           <div style={{
-            color: "rgb(0, 74, 37)",
+            color: "rgb(255, 255, 255)",
             fontSize: "20px",
             lineHeight: "32.5px",
             marginBottom: "40px"
