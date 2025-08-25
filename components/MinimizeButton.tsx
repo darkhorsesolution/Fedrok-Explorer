@@ -9,14 +9,25 @@ export default function MinimizeButton({ onClick, className = "" }: MinimizeButt
   return (
     <button
       onClick={onClick}
-      className={`fixed bottom-4 right-4 z-40 cursor-pointer transition-all duration-200 hover:bg-primary-700 ${className}`}
+      className={`fixed bottom-4 right-4 z-40 cursor-pointer transition-all duration-300 hover:-translate-y-2 ${className}`}
       style={{
-        backgroundColor: "rgb(5, 96, 50)", // primary-600
-        borderRadius: "6px",
-        padding: "8px",
-        border: "2px solid rgb(255, 255, 255)",
+        backgroundColor: "rgb(255, 255, 255)",
+        borderRadius: "12px",
+        padding: "12px",
+        border: "2px solid rgb(5, 96, 50)",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
       }}
       title="Minimize"
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = "rgb(5, 96, 50)";
+        const svg = e.currentTarget.querySelector('svg');
+        if (svg) svg.style.color = "rgb(255, 255, 255)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = "rgb(255, 255, 255)";
+        const svg = e.currentTarget.querySelector('svg');
+        if (svg) svg.style.color = "rgb(5, 96, 50)";
+      }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -28,9 +39,9 @@ export default function MinimizeButton({ onClick, className = "" }: MinimizeButt
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-white"
+        className="transition-colors duration-300"
         style={{
-          color: "rgb(255, 255, 255)",
+          color: "rgb(5, 96, 50)",
           height: "24px",
           width: "24px",
           verticalAlign: "middle",
