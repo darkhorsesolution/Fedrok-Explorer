@@ -145,7 +145,109 @@ export default function FedrokExplorer() {
         }} />
       </div>
 
-      {/* Hero Section */}
+      {/* Content Section */}
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        position: "relative",
+        minHeight: "100px",
+        padding: "20px",
+        maxWidth: "1200px",
+        marginLeft: "auto",
+        marginRight: "auto"
+      }}>
+        <section style={{
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
+          minHeight: "100px",
+          padding: "20px",
+          width: "100%",
+          alignSelf: "stretch",
+          flexGrow: "1",
+          maxWidth: "1200px",
+          marginLeft: "auto",
+          marginRight: "auto"
+        }} />
+      </div>
+
+      {/* Marketing Hero Section */}
+      <div style={{
+        alignItems: "center",
+        backgroundColor: "rgb(0, 74, 37)",
+        backgroundImage: 'url("https://fedrok.com/images/audit-top.svg"), url("https://fedrok.com/images/audit-left.svg"), url("https://fedrok.com/images/audit-right.svg")',
+        backgroundPosition: "50% 0%, 40px 100%, right 40px 100%",
+        backgroundRepeat: "no-repeat, no-repeat, no-repeat",
+        backgroundSize: "90%, auto 374px, auto 374px",
+        display: "flex",
+        justifyContent: "center",
+        maxWidth: "1840px",
+        padding: "112px 40px",
+        marginLeft: "auto",
+        marginRight: "auto"
+      }}>
+        <div>
+          <div style={{
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+            gap: "40px",
+            maxWidth: "864px",
+            textAlign: "center",
+            width: "100%"
+          }}>
+            <h3 style={{
+              animation: "0.3s ease 0.3s 1 normal forwards running fadeInAnimation",
+              animationDelay: "0.3s",
+              animationDuration: "0.3s",
+              animationFillMode: "forwards",
+              color: "rgb(255, 255, 255)",
+              opacity: "1",
+              textAlign: "center",
+              transitionDuration: "0.4s",
+              font: "68px/88.4px Unbounded, sans-serif",
+              fontFamily: "Unbounded, sans-serif",
+              fontSize: "68px",
+              lineHeight: "88.4px"
+            }}>
+              Fedrok offers a unique way to combine profit with purpose
+            </h3>
+            <button
+              type="button"
+              style={{
+                backgroundColor: "rgb(255, 255, 255)",
+                borderColor: "rgb(5, 96, 50)",
+                color: "rgb(5, 96, 50)",
+                cursor: "pointer",
+                height: "60px",
+                minWidth: "180px",
+                textAlign: "center",
+                padding: "0 80px",
+                font: "20px/28px WorkSans, sans-serif",
+                border: "2px solid rgb(5, 96, 50)",
+                borderRadius: "8px"
+              }}
+            >
+              <div style={{
+                alignItems: "center",
+                display: "flex",
+                height: "50px",
+                justifyContent: "center",
+                font: "20px/28px WorkSans, sans-serif"
+              }}>
+                <p style={{
+                  font: "20px/28px WorkSans, sans-serif",
+                  whiteSpace: "nowrap"
+                }}>
+                  Buy FDK Today
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Blockchain Explorer Hero Section */}
       <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "80px 40px" }}>
         <div className="mx-auto text-center" style={{ maxWidth: "1152px" }}>
           <h1 className="font-bold" style={{ fontSize: "60px", lineHeight: "75px", marginBottom: "20px", color: "rgb(0, 74, 37)" }}>
