@@ -163,7 +163,7 @@ export default function FedrokExplorer() {
           </div>
 
           {/* Search Section */}
-          <div className="rounded-2xl p-4 sm:p-6 md:p-8 border-2 shadow-2xl backdrop-blur-sm mx-auto" 
+          <div className="rounded-2xl p-2 sm:p-3 md:p-4 border-2 shadow-2xl backdrop-blur-sm mx-auto" 
             style={{ 
               background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
               borderColor: "rgba(255, 255, 255, 0.3)", 
@@ -177,7 +177,7 @@ export default function FedrokExplorer() {
                 placeholder="Search by block number, transaction hash, or address..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 rounded-lg px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/30 backdrop-blur-sm transition-all duration-300"
+                className="flex-1 rounded-lg px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-medium focus:outline-none focus:ring-2 focus:ring-white/30 backdrop-blur-sm transition-all duration-300"
                 style={{ 
                   background: "rgba(255, 255, 255, 0.9)",
                   border: "1px solid rgba(255, 255, 255, 0.3)", 
@@ -187,7 +187,7 @@ export default function FedrokExplorer() {
               />
               <button 
                 onClick={handleSearch}
-                className="px-4 sm:px-6 py-2 rounded-lg font-bold text-xs sm:text-sm transition-all duration-300 hover:scale-105 hover:shadow-xl backdrop-blur-sm whitespace-nowrap"
+                className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl backdrop-blur-sm whitespace-nowrap"
                 style={{ 
                   background: "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)",
                   color: "rgb(0, 74, 37)",
@@ -213,14 +213,14 @@ export default function FedrokExplorer() {
 
       {/* Network Statistics */}
       <div style={{ backgroundColor: "rgb(251, 241, 229)", padding: "64px 40px" }}>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 md:mb-12 font-bold" style={{ 
             color: "rgb(0, 74, 37)",
             fontFamily: "var(--font-unbounded), sans-serif"
           }}>
             Network Statistics
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {Object.entries(networkStats).map(([key, value]) => (
               <div
                 key={key}
